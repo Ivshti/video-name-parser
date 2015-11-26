@@ -7,6 +7,7 @@ var excluded = {"dvdrip": 1, "hdtv": 1, "xvid": 1, "720p": 1, "1080p": 1, "480p"
 var movieKeywords = ["1080p", "720p", "blurayrip", "brrip", "divx", "dvdrip", "hdrip", "hdtv", "tvrip", "xvid", "camrip"];
 
 var SEGMENTS_SPLIT = /\.| |-|;|_/g;
+var MATCH_FILES = /.mp4$|.mkv$|.avi$/;
 var minYear = 1900, maxYear = 2060;
 
 /*
@@ -22,14 +23,16 @@ var path = require("path"),
 function simplifyName(n) { 
     return n.toLowerCase()
         .trim()
-        .replace(/\([^\(]+\)$/, "") /* remove brackets at end */
+        .replace(/\([^\(]+\)$/, "") // remove brackets at end
         .replace(/&/g, "and")
-        .replace(/[^0-9a-z ]+/g, " ") /* anything but lowercase characters, numbers */
-        .split(" ").filter(function(r){return r}).join(" ") /* remove any aditional whitespaces */
+        .replace(/[^0-9a-z ]+/g, " ") // remove special chars
+        .split(" ").filter(function(r){return r}).join(" ")
 };
 
 function indexFile(filePath, options)
 {
+    //if (! filePath.match(MATCH_FILES)) return { type: "other" };
+
     var options = options || {};
     var meta = {};
     
@@ -315,6 +318,7 @@ function indexFile(filePath, options)
     meta.tag = [];
     if (filePath.match(/1080p/i)) { meta.tag.push("hd"); meta.tag.push("1080p"); }
     if (filePath.match(/720p/i)) { meta.tag.push("720p"); }
+    if (filePath.match(/480p/i)) { meta.tag.push("480p"); }
     if (isSample) meta.tag.push("sample");
      
     return meta;
