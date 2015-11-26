@@ -16,9 +16,7 @@ var minYear = 1900, maxYear = 2060;
  * * http://wiki.xbmc.org/index.php?title=Advancedsettings.xml#.3Ctvshowmatching.3E
  */
  
-var path = require("path"),
-    fs = require("fs"),
-    url = require("url");
+var path = require("path");
 
 function simplifyName(n) { 
     return n.toLowerCase()
@@ -29,7 +27,7 @@ function simplifyName(n) {
         .split(" ").filter(function(r){return r}).join(" ")
 };
 
-function indexFile(filePath, options)
+function parseVideoName(filePath, options)
 {
     //if (! filePath.match(MATCH_FILES)) return { type: "other" };
 
@@ -324,4 +322,4 @@ function indexFile(filePath, options)
     return meta;
 }
 
-module.exports = indexFile;
+module.exports = parseVideoName;

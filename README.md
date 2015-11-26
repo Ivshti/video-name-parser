@@ -3,4 +3,6 @@ Parse names of video files to identify quality (e.g. 1080p), season/episode, yea
 
 # Usage
 ```javascript
+var indexVideo = require("video-name-parser");
+
 ```
