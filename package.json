@@ -1,0 +1,27 @@
+{
+  "name": "video-name-parser",
+  "version": "1.0.1",
+  "description": "Parse names of video files to identify quality (e.g. 1080p), season/episode, year, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ivshti/video-name-parser"
+  },
+  "keywords": [
+    "parsing",
+    "video",
+    "naem"
+  ],
+  "author": "Ivo Georgiev <ivo@linvo.com> (http://ivogeorgiev.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Ivshti/video-name-parser/issues"
+  },
+  "homepage": "https://github.com/Ivshti/video-name-parser",
+  "dependencies": {
+    "tape": "^4.2.2"
+  }
+}
