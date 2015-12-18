@@ -300,6 +300,12 @@ function parseVideoName(filePath, options)
         delete meta.episode;
         delete meta.season;
     }
+    
+    // we have a year. put it to .aired instead
+    if (meta.type == "series" && meta.year) {
+     meta.aired = meta.aired || meta.year;
+     delete meta.year;
+    }
 
     meta.type += isSample ? "-sample" : "";
 
