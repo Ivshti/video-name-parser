@@ -136,10 +136,9 @@ function parseVideoName(filePath, options)
     }
 
     /*
-     *  A stamp of the style "804", meaning season 8, episode 4 
-     *  Since this one is risky, do it only if we haven't matched a year (most likely not a movie)
+     *  A stamp of the style "804", meaning season 8, episode 4
      * */
-    if (!(saneSeason() && saneEpisode()) && !meta.year && !options.strict)
+    if (!(saneSeason() && saneEpisode()) && !options.strict)
     {
         var stamp = firstNameSplit
         .reverse() /* search from the end */
@@ -155,7 +154,8 @@ function parseVideoName(filePath, options)
         })[0]; /* Notice how always the first match is choosen ; the second might be a part of the episode name (e.g. "Southpark - 102 - weight gain 4000"); 
                 * that presumes episode number/stamp comes before the name, which is where most human beings would put it */
     
-        if (stamp)
+        /* Since this one is risky, do it only if we haven't matched a year (most likely not a movie) or if year is BEFORE stamp, like: show.2014.801.mkv */
+        if (stamp && (!meta.year || (meta.year && (firstNameSplit.indexOf(stamp.toString()) < firstNameSplit.indexOf(meta.year.toString())))))
         {
             meta.episode = [ parseInt(stamp.slice(-2), 10) ];
             meta.season = parseInt(stamp.slice(0, -2), 10);
