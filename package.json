@@ -21,7 +21,7 @@
     "url": "https://github.com/Ivshti/video-name-parser/issues"
   },
   "homepage": "https://github.com/Ivshti/video-name-parser",
-  "dependencies": {
-    "tape": "^4.2.2"
+  "devDependencies": {
+    "tape": "^4.5.1"
   }
 }
