@@ -185,7 +185,7 @@ function parseVideoName(filePath, options)
     if (! saneEpisode())
     {
         /* TODO: consider the case when a hyphen is used for multiple episodes ; e.g. e1-3*/
-        var episodeMatch = segments.join("/").match(/ep(isode)?(\.| )?(\d{2})/ig);  
+        var episodeMatch = segments.join("/").match(/ep(isode)?(\.| )?(\d+)/ig);  
         if (episodeMatch)
             meta.episode = [ parseInt(episodeMatch[0].match(/\d/g).join(""), 10) ];
     }

@@ -35,6 +35,8 @@ var movies = [
   //"pioneer.one.2020.2014.avi"   //movie with longstam & year (old movie)
 ];
 
+console.log(parser("South.Park.S20E07.Oh.Jeez.720p.Uncensored.Web-DL.EN-Sub.x264-[MULVAcoded].mkv"))
+
 movies.forEach(function(str) {
 	tape("movie test - "+str, function(t) {
 		var x = parser(str);
