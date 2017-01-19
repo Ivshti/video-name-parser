@@ -292,7 +292,7 @@ function parseVideoName(filePath, options)
     else
         meta.type = "other";
     
-    if (options.fileLength && options.fileLength < 80*1024*1024 && meta.type.match(/movie|series/) && !isSample) {
+    if (options.fileLength && options.fileLength < (meta.type.match(/movie/) ? 80 : 50)*1024*1024 && meta.type.match(/movie|series/) && !isSample) {
         meta.type = "other";
     }
 
