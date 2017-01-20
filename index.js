@@ -3,8 +3,11 @@
  * */
 var maxSegments = 3;
 
-var excluded = {"dvdrip": 1, "hdtv": 1, "xvid": 1, "720p": 1, "1080p": 1, "480p": 1, "bdrip": 1, "brrip": 1};
-var movieKeywords = ["1080p", "720p", "blurayrip", "brrip", "divx", "dvdrip", "hdrip", "hdtv", "tvrip", "xvid", "camrip"];
+var movieKeywords = ["1080p", "720p", "480p", "blurayrip", "brrip", "divx", "dvdrip", "hdrip", "hdtv", "tvrip", "xvid", "camrip"];
+
+// Excluded is an object we use to exclude those keywords from consideration for detecting strings like "season X"
+var excluded = { };
+movieKeywords.forEach(function(x) { excluded[x] = 1 });
 
 var SEGMENTS_SPLIT = /\.| |-|;|_/g;
 var MATCH_FILES = /.mp4$|.mkv$|.avi$/;
