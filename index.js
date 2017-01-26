@@ -231,8 +231,12 @@ function parseVideoName(filePath, options)
 
     (options.fromInside ? segments : [].concat(segments).reverse()).forEach(function(seg, i)
     {
-        if (seg == segments[0])
+        if (seg == segments[0]) {
             seg = seg.split(".").slice(0, -1).join("."); /* Remove extension */
+
+            var sourcePrefix = seg.match(/^\[(.*?)\]/)
+            if (sourcePrefix) seg = seg.slice(sourcePrefix[0].length)
+        }
         
         /*
          * WARNING: we must change how this works in order to handle cases like
