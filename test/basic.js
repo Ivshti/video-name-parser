@@ -3,6 +3,7 @@ var parser = require("../index");
 
 var shows = [
     "pioneer.one.s01e01.avi",       //show with long-md
+    "[ hoi ]pioneer.one.s01e01.avi",       //show with long-md with prefix
     //"pioneer.one.s1e1.avi",         //show with short-md //never seen
     "pioneer.one.1x1.avi",          //show with alt-short-md
     "pioneer.one.01x01.avi",        //show with alt-long-md
