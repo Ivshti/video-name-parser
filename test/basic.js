@@ -4,16 +4,16 @@ var parser = require("../index");
 var shows = [
     "pioneer.one.s01e01.avi",       //show with long-md
     "[ hoi ]pioneer.one.s01e01.avi",       //show with long-md with prefix
-    //"pioneer.one.s1e1.avi",         //show with short-md //never seen
+    //"pioneer.one.s1e1.avi",         //show with short-md //never seen; unsupported
     "pioneer.one.1x1.avi",          //show with alt-short-md
     "pioneer.one.01x01.avi",        //show with alt-long-md
     "pioneer.one.season.1.episode.1.avi", //show with full md //never seen
     "pioneer.one.1001.avi",         //show with unmarked md
-    //"pioneer.one.2014.217.avi",     //show with year & unmarked short-md
-    //"pioneer.one.2014.1017.avi",    //show with year & unmarked long-md
+    //"pioneer.one.2014.217.avi",     //show with year & unmarked short-md; unsupported
+    //"pioneer.one.2014.1017.avi",    //show with year & unmarked long-md; unsupported
     "pioneer.one.2014.s01e01.avi",  //show with year & long-md
-    "pioneer.one.101.s01e01.avi",        //show with stamp & long-md
-    "pioneer.one.101.2014.s01e01.avi"   //total fuck up
+    "pioneer.one.101.s01e01.avi",        //show with stamp & long-md; unsupported
+    "pioneer.one.101.2014.s01e01.avi"   //total fuck up ; unsupported
 ];
 
 shows.forEach(function(str) {
