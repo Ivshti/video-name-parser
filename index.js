@@ -19,7 +19,6 @@ var minYear = 1900, maxYear = 2060;
  * * http://wiki.xbmc.org/index.php?title=Advancedsettings.xml#.3Ctvshowmatching.3E
  */
  
-var path = require("path");
 
 function simplifyName(n) { 
     return n.toLowerCase()
