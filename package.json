@@ -1,6 +1,6 @@
 {
   "name": "video-name-parser",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Parse names of video files to identify quality (e.g. 1080p), season/episode, year, etc.",
   "main": "index.js",
   "scripts": {
