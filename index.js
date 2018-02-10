@@ -61,13 +61,17 @@ function parseVideoName(filePath, options)
      * */
     [segments[0], segments[1]].filter(function(x){return x}).forEach(function(seg)
     {
-        var numbers = seg.match(/[^\d](\d\d\d\d)[^\d]/);
-        if (numbers && numbers[1])
+        var regex = /\b\d{4}\b/g
+        var matches
+
+        while (matches = regex.exec(seg)) 
         {
-            var number = parseInt(numbers[1], 10);
+            var number = parseInt(matches[0], 10);
             if (number >= minYear && number <= maxYear)
-                meta.year = number;
+                meta.year = number
         }
+
+        console.log(meta.year)
     });
 
     /* 

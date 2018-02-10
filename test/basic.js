@@ -1,6 +1,8 @@
 var tape = require("tape");
 var parser = require("../index");
 
+console.log(parser("Blade.Runner.2049.2017.1080p.WEB-DL", { strict: true }))
+
 var shows = [
     "pioneer.one.s01e01.avi",       //show with long-md
     "[ hoi ]pioneer.one.s01e01.avi",       //show with long-md with prefix
@@ -37,7 +39,6 @@ var movies = [
 ];
 
 console.log(parser("South.Park.S20E07.Oh.Jeez.720p.Uncensored.Web-DL.EN-Sub.x264-[MULVAcoded].mkv"))
-console.log(parser("Blade.Runner.2049.2017.1080p.WEB-DL", { strict: true }))
 movies.forEach(function(str) {
 	tape("movie test - "+str, function(t) {
 		var x = parser(str);
