@@ -70,8 +70,6 @@ function parseVideoName(filePath, options)
             if (number >= minYear && number <= maxYear)
                 meta.year = number
         }
-
-        console.log(meta.year)
     });
 
     /* 
