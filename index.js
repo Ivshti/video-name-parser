@@ -11,7 +11,7 @@ movieKeywords.forEach(function(x) { excluded[x] = 1 });
 
 var SEGMENTS_SPLIT = /\.| |-|;|_/g;
 var MATCH_FILES = /.mp4$|.mkv$|.avi$/;
-var minYear = 1900, maxYear = 2060;
+var minYear = 1900, maxYear = 2030;
 
 /*
  * TWO REFERENCES
