@@ -3,7 +3,20 @@
  * */
 var maxSegments = 3;
 
-var movieKeywords = ["1080p", "720p", "480p", "blurayrip", "brrip", "divx", "dvdrip", "hdrip", "hdtv", "tvrip", "xvid", "camrip"];
+var resolutionKeywords = ["1080p", "720p", "480p", "1440p", "2160p"]
+
+var codecKeywords = ["divx", "xvid", "x264", "x265", "h264", "hevc", "avchd"]
+
+var audioKeywords = ["dts", "dts-hd", "acc", "mp3", "wav", "truehd", "ac3", "atmos", "dtsma", "dolby", "dolbydigital", "dolby digital"]
+
+var goodQualityReleaseKeywords = ["ppv", "ppvrip", "dvdrip", "dvdmux", "dvdr", "dvd-full", "full-rip", "iso rip", "lossless rip", "untouched rip", "dvd-5", "dvd-9", "dsr",
+    "dsrip", "satrip", "dthrip", "dvbrip", "hdtv", "pdtv", "dtvrip", "tvrip", "hdtvrip", "vodrip", "vodr", "webdl", "web dl", "web-dl", "hdrip", "web-dlrip", "webrip", 
+    "web-cap", "webcap", "web cap", "blu-ray", "bluray", "bdrip", "bdrip", "brrip", "bdmv", "bdr", "bd25", "bd50", "bd5", "bd9", "ultrahd", "remux"]
+
+var badQualityReleaseKeywords = ["camrip", "cam", "ts", "hdts", "telesync", "pdvd", "predvdrip", "wp", "workprint", "tc", "hdtc", "telecine",
+    "src", "screener", "dvdscr", "dvdscreener", "bdscr", "ddc", "r5",]
+
+var movieKeywords = resolutionKeywords.concat(codecKeywords).concat(audioKeywords).concat(goodQualityReleaseKeywords).concat(badQualityReleaseKeywords)
 
 // Excluded is an object we use to exclude those keywords from consideration for detecting strings like "season X"
 var excluded = { };
@@ -328,10 +341,45 @@ function parseVideoName(filePath, options)
         meta.imdb_id = options.hints.imdb_id;
 
     meta.tag = [];
+    if (filePath.match(/2060p/i)) { meta.tag.push("4k"); meta.tag.push("uhd"); meta.tag.push("2160p"); }
+    if (filePath.match(/1440o/i)) { meta.tag.push("2k"); meta.tag.push("wqhd"); meta.tag.push("1440p"); }
     if (filePath.match(/1080p/i)) { meta.tag.push("hd"); meta.tag.push("1080p"); }
     if (filePath.match(/720p/i)) { meta.tag.push("720p"); }
     if (filePath.match(/480p/i)) { meta.tag.push("480p"); }
     if (isSample) meta.tag.push("sample");
+
+    if(options.getQuality) {
+        var quality = {
+            audio: [],
+            good: [],
+            bad: [],
+            codec: [],
+        }
+
+        segments.forEach(function(segment) {
+          var segmentSplit = segment.split(SEGMENTS_SPLIT) 
+            segmentSplit.forEach(function(word) {
+                var w = word.toLowerCase() 
+                if(audioKeywords.includes(w)) {
+                    quality.audio.push(w)
+                }
+
+                if(goodQualityReleaseKeywords.includes(w)) {
+                    quality.good.push(w)
+                }
+
+                if(badQualityReleaseKeywords.includes(w)) {
+                    quality.bad.push(w)
+                }
+
+                if(codecKeywords.includes(w)) {
+                    quality.codec.push(w)
+                }
+            })
+        })
+
+        meta.quality = quality
+    }
      
     return meta;
 }
