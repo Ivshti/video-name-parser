@@ -342,7 +342,7 @@ function parseVideoName(filePath, options)
 
     meta.tag = [];
     if (filePath.match(/2060p/i)) { meta.tag.push("4k"); meta.tag.push("uhd"); meta.tag.push("2160p"); }
-    if (filePath.match(/1440o/i)) { meta.tag.push("2k"); meta.tag.push("wqhd"); meta.tag.push("1440p"); }
+    if (filePath.match(/1440p/i)) { meta.tag.push("2k"); meta.tag.push("wqhd"); meta.tag.push("1440p"); }
     if (filePath.match(/1080p/i)) { meta.tag.push("hd"); meta.tag.push("1080p"); }
     if (filePath.match(/720p/i)) { meta.tag.push("720p"); }
     if (filePath.match(/480p/i)) { meta.tag.push("480p"); }
