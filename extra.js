@@ -10,9 +10,13 @@ var {
     allKeywords
 } = require('./keywords')
 
-var leftBoundary = '(^|(?<=([\\[\\]\\(\\)\\. \\-;,_\/\\\\+]){1}))'
-var rightBoundary = '((?=[\\[\\]\\)\\)\\. \\-; ,_\/\\\\+]{1})|$)'
-var allKeywordsPattern = '\(' + allKeywords.join('|') + '\)'
+// chars without escaping: [](). -;,_/\+
+var separatorChars = '([\\[\\](). \\-;,_\\/\\\\+])'
+// NOTE: Needs node ^8.10.0 V8 > 6.2 to work with lookbehind ?<=
+var leftBoundary = '(^|(?<=' + separatorChars + '{1}))'
+var rightBoundary = '((?=' + separatorChars + '{1})|$)'
+
+var allKeywordsPattern = '(' + allKeywords.join('|') + ')'
 var allKeywordsRegEx = new RegExp(leftBoundary + allKeywordsPattern + rightBoundary, 'gi')
 
 var keywordsWithType = (function () {
