@@ -340,7 +340,7 @@ function parseVideoName(filePath, options)
     if (filePath.match(/480p|480i/i)) { meta.tag.push("480p"); }
     if (isSample) meta.tag.push("sample");
 
-    if(options.getExtra) {
+    if(options.extra) {
         meta.extra = getExtra(filePath)
     }
      

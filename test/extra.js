@@ -17,7 +17,7 @@ var filepaths = [
 ]
 
 test('test: ' + filepaths[0], function (t) {
-    var x = parser(filepaths[0], { getExtra: true })
+    var x = parser(filepaths[0], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'movie')
     t.equals(x.year, 2018)
@@ -30,7 +30,7 @@ test('test: ' + filepaths[0], function (t) {
 })
 
 test('test: ' + filepaths[1], function (t) {
-    var x = parser(filepaths[1], { getExtra: true })
+    var x = parser(filepaths[1], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'movie')
     t.equals(x.year, 2018)
@@ -43,7 +43,7 @@ test('test: ' + filepaths[1], function (t) {
 })
 
 test('test: ' + filepaths[2], function (t) {
-    var x = parser(filepaths[2], { getExtra: true })
+    var x = parser(filepaths[2], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'series')
     t.equals(x.year, undefined)
@@ -56,7 +56,7 @@ test('test: ' + filepaths[2], function (t) {
 })
 
 test('test: ' + filepaths[3], function (t) {
-    var x = parser(filepaths[3], { getExtra: true })
+    var x = parser(filepaths[3], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'series')
     t.equals(x.year, undefined)
@@ -69,7 +69,7 @@ test('test: ' + filepaths[3], function (t) {
 })
 
 test('test: ' + filepaths[4], function (t) {
-    var x = parser(filepaths[4], { getExtra: true })
+    var x = parser(filepaths[4], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'movie')
     t.equals(x.year, 2018)
@@ -82,7 +82,7 @@ test('test: ' + filepaths[4], function (t) {
 })
 
 test('test: ' + filepaths[5], function (t) {
-    var x = parser(filepaths[5], { getExtra: true })
+    var x = parser(filepaths[5], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'movie')
     t.equals(x.year, 2018)
@@ -95,7 +95,7 @@ test('test: ' + filepaths[5], function (t) {
 })
 
 test('test: ' + filepaths[6], function (t) {
-    var x = parser(filepaths[6], { getExtra: true })
+    var x = parser(filepaths[6], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'movie')
     t.equals(x.year, 2019)
@@ -108,7 +108,7 @@ test('test: ' + filepaths[6], function (t) {
 })
 
 test('test: ' + filepaths[7], function (t) {
-    var x = parser(filepaths[7], { getExtra: true })
+    var x = parser(filepaths[7], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'series')
     t.equals(x.year, undefined)
@@ -121,7 +121,7 @@ test('test: ' + filepaths[7], function (t) {
 })
 
 test('test: ' + filepaths[8], function (t) {
-    var x = parser(filepaths[8], { getExtra: true })
+    var x = parser(filepaths[8], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'other')
     t.equals(x.year, undefined)
@@ -134,7 +134,7 @@ test('test: ' + filepaths[8], function (t) {
 })
 
 test('test: ' + filepaths[9], function (t) {
-    var x = parser(filepaths[9], { getExtra: true })
+    var x = parser(filepaths[9], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'other') // Fails (detected as movie) because of the year
     t.equals(x.year, 2018)
@@ -149,7 +149,7 @@ test('test: ' + filepaths[9], function (t) {
 })
 
 test('test: ' + filepaths[10], function (t) {
-    var x = parser(filepaths[10], { getExtra: true })
+    var x = parser(filepaths[10], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'other')
     t.equals(x.year, undefined)
@@ -162,7 +162,7 @@ test('test: ' + filepaths[10], function (t) {
 })
 
 test('test: ' + filepaths[11], function (t) {
-    var x = parser(filepaths[11], { getExtra: true })
+    var x = parser(filepaths[11], { extra: true })
     var extra = x.extra
     t.equals(x.type, 'movie')
     t.equals(x.year, 2017)
