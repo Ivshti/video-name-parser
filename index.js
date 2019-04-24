@@ -1,9 +1,14 @@
+var { getExtra } = require('./extra')
+var { allKeywords } = require('./keywords')
+
 /*
  * Constants 
  * */
 var maxSegments = 3;
 
-var movieKeywords = ["1080p", "720p", "480p", "blurayrip", "brrip", "divx", "dvdrip", "hdrip", "hdtv", "tvrip", "xvid", "camrip"];
+var movieKeywords = allKeywords
+
+// function keywordArrToObj(arr){}
 
 // Excluded is an object we use to exclude those keywords from consideration for detecting strings like "season X"
 var excluded = { };
@@ -328,10 +333,16 @@ function parseVideoName(filePath, options)
         meta.imdb_id = options.hints.imdb_id;
 
     meta.tag = [];
-    if (filePath.match(/1080p/i)) { meta.tag.push("hd"); meta.tag.push("1080p"); }
-    if (filePath.match(/720p/i)) { meta.tag.push("720p"); }
-    if (filePath.match(/480p/i)) { meta.tag.push("480p"); }
+    if (filePath.match(/2160p|2160i|3840x2160/i)) { meta.tag.push("4k"); meta.tag.push("uhd"); meta.tag.push("2160p"); }
+    if (filePath.match(/1440p|1440i/i)) { meta.tag.push("2k"); meta.tag.push("wqhd"); meta.tag.push("1440p"); }
+    if (filePath.match(/1080p|1080i|1920x1080/i)) { meta.tag.push("hd"); meta.tag.push("1080p"); }
+    if (filePath.match(/720p|720i/i)) { meta.tag.push("720p"); }
+    if (filePath.match(/480p|480i/i)) { meta.tag.push("480p"); }
     if (isSample) meta.tag.push("sample");
+
+    if(options.extra) {
+        meta.extra = getExtra(filePath)
+    }
      
     return meta;
 }
