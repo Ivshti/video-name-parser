@@ -104,7 +104,7 @@ function parseVideoName(filePath, options)
                 meta.season = parseInt(seasonMatch[1], 10);
             
             /* TODO: consider the case when a hyphen is used for multiple episodes ; e.g. e1-3 */
-            var episodeMatch = x.match(/E(\d{2})/ig);
+            var episodeMatch = x.match(/(?<=\W|\d)E(\d{2})/ig);
             if (episodeMatch)
                 meta.episode = episodeMatch.map(function(y) { return parseInt(y.slice(1), 10) });
             
